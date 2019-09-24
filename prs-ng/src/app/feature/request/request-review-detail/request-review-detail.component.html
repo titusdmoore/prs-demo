@@ -1,0 +1,99 @@
+<!-- Modal -->
+<div class="modal fade" id="rejModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="rejModalTitle">Reject Request</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Please provide rejection reason
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Rejection Reason</span>
+                    </div>
+                    <input [(ngModel)]='req.rejectionReason' name='total' type="text" class="form-control col-sm-6"
+                        id="productname" aria-describedby="emailHelp" placeholder="Reason">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="setRej(rReqId);">Reject</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="header">
+    <div id='pagetitle' class="form-group" style="margin-bottom: .3rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/request/review' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+</div>
+<table class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Id</th>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Description </th>
+            <th class="table-secondary btn-link font-weight-bold">Status</th>
+            <th class="table-secondary btn-link font-weight-bold">User</th>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td></td>
+        <td>{{req.id}}</td>
+        <td></td>
+        <td>{{req.description}}</td>
+        <td>{{req.status}}</td>
+        <td>{{req.user.username}}</td>
+        <td></td>
+        <td>{{req.total | currency}}</td>
+    </tbody>
+</table>
+<hr>
+<div class="requestLine-container">
+    <div class="rl-header-container">
+        <h2>Request Line List</h2>
+    </div>
+    <table class="table table-sm table-striped">
+        <thead class="thead-dark">
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Product</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Quantity</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Price</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Line Price</u></th>
+        </thead>
+        <tbody>
+            <tr *ngIf="!noLines" style="background-color: red;
+                color: white;">
+                <td>No Request Lines!</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let rl of requestLines">
+                <th></th>
+                <td>{{rl.product.name}}</td>
+                <td>{{rl.quantity}}</td>
+                <td>{{rl.product.price | currency}}</td>
+                <td>{{rl.product.price * rl.quantity | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="action-container">
+        <button class="btn btn-success" (click)="setApp(rReqId);"><i style="margin-right: .5rem;" class="fas fa-check-circle"></i>Approve</button>
+        <button data-toggle="modal" data-target="#rejModal" class="btn btn-danger" (click)="setRejReq(rReqId);"><i style="margin-right: .5rem;"
+                class="fas fa-times-circle"></i>Reject</button>
+    </div>
+</div>

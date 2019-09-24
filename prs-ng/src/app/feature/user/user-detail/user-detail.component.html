@@ -1,0 +1,85 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Delete?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure you want to delete?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger" (click)='remove();' data-dismiss="modal">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class='component-content'>
+  <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+    <span>
+      <h1 class='page-header'>{{title}}</h1>
+    </span>
+    <a routerLink='/user/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+        style="margin-right: .5rem;"></i>Back to List</a>
+  </div>
+  <div class="input-group name-field">
+    <div class="input-group-prepend">
+      <span class="input-group-text">First and Last</span>
+    </div>
+    <input name='FirstName' type="text" class="form-control" id="userfirstname" aria-describedby="fnameHelp"
+      value="{{user.firstname}}" readonly>
+    <input name='LastName' type="text" class="form-control" id="userlastname" aria-describedby="lnameHelp"
+      value="{{user.lastname}}" readonly>
+  </div>
+
+  <div class="input-group name-field">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Username</span>
+    </div>
+    <input name='UserName' type="text" class="form-control" id="username" aria-describedby="unameHelp"
+      value="{{user.username}}" readonly>
+  </div>
+
+  <div class="input-group name-field">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Phone</span>
+    </div>
+    <!-- <script>
+          $(":input").inputmask();
+          $("#PhoneNumber").inputmask({"mask": "(999) 999-9999"});
+      </script> -->
+    <input name='PhoneNumber' type="text" class="form-control col-sm-6" id="phone" aria-describedby="phoneHelp"
+      value="{{user.phone | mask: '(000) 000-0000'}}" readonly>
+    <div class="input-group-prepend">
+      <span class="input-group-text">Email</span>
+    </div>
+    <input name='Email' type="text" class="form-control col-sm-6" id="email" aria-describedby="emailHelp"
+      value="{{user.email}}" readonly>
+  </div>
+
+  <div class="create-check d-flex justify-content-center">
+    <div class="form-check form-check-inline create-chck-inln">
+      <label class="form-check-label" for="userAdmin">Is Admin: </label>
+      <input name='Admin' type="checkbox" class="form-control col-sm-6" id="userAdmin" aria-describedby="adminHelp"
+        value="{{user.isAdmin}}" [attr.checked]="user.isAdmin ? 'checked' : null" disabled readonly>
+    </div>
+
+    <div class="form-check form-check-inline create-chck-inln">
+      <label class="form-check-label" for="userReviewer">Is Reviewer: </label>
+      <input name='Reviewer' type="checkbox" class="form-control col-sm-6" id="userReviewer"
+        aria-describedby="reviewerHelp" [attr.checked]="user.isReviewer ? 'checked' : null" disabled readonly>
+    </div>
+  </div>
+  <div class="button-group">
+    <div class='form-group'>
+      <a routerLink='/user/edit/{{user.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a>
+    </div>
+    <div class='form-group'>
+      <button data-toggle="modal" data-target="#deleteModal" class='btn btn-danger'>Delete</button>
+    </div>
+  </div>
+</div>

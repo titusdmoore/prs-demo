@@ -1,0 +1,22 @@
+.form-group {
+    width: 55%;
+    margin: auto;
+}
+.input-group {
+    margin: 1rem 0 1rem 0;
+}
+.page-header {
+    display: inline-flex;
+    margin-top: .5rem;
+}
+.back-btn {
+    float: right;
+    margin-top: 1rem;
+}
+.back-btn:hover i {
+    transform: scale(1.1, 1.1);
+}
+.back-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+}

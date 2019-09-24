@@ -1,0 +1,38 @@
+<div class="header">
+    <span>
+        <h1>{{title}}</h1>
+    </span>
+    <div class="create-container">
+        <a routerLink='/vendor/create' class="create-button">Create Vendor<i class="fas fa-plus-circle"></i></a>
+    </div>
+</div>
+
+<table class="table table-striped" *ngIf="vendors">
+    <thead class="thead-dark">
+        <tr>
+            <th><a (click)="sortBy('code')"><u>Code</u></a></th>
+            <th><a (click)="sortBy('name')"><u>Name</u></a></th>
+            <th><a (click)="sortBy('address')"><u>Address</u></a></th>
+            <th><a (click)="sortBy('phone')"><u>Phone Number</u></a></th>
+            <th><a (click)="sortBy('email')"><u>Email</u></a></th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let v of vendors | sort:sortCriteria:sortOrder">
+            <td>{{v.code}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.address}} {{v.city}}, {{v.state}} {{v.zip}}</td>
+            <td>{{v.phone | mask: '(000) 000-0000'}}</td>
+            <td>{{v.email}}</td>
+            <td>
+                <a routerLink="/vendor/detail/{{v.id}}">
+                    <i style="margin-right: .5rem;" class="fas fa-info-circle table-icon" title="view"></i>
+                </a>
+                <a routerLink="/vendor/edit/{{v.id}}">
+                    <i class="fas fa-edit table-icon" title="edit"></i>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>

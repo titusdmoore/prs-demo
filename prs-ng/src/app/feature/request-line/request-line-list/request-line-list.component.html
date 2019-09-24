@@ -1,0 +1,79 @@
+<div class="header">
+    <div id='pagetitle' class="form-group" style="margin-bottom: .3rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/request/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+</div>
+<table class="table table-sm table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Id</th>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Description </th>
+            <th class="table-secondary btn-link font-weight-bold">Status</th>
+            <th class="table-secondary btn-link font-weight-bold">User</th>
+            <th></th>
+            <th class="table-secondary btn-link font-weight-bold">Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        <td></td>
+        <td>{{req.id}}</td>
+        <td></td>
+        <td>{{req.description}}</td>
+        <td>{{req.status}}</td>
+        <td>{{req.user.username}}</td>
+        <td></td>
+        <td>{{req.total | currency}}</td>
+    </tbody>
+</table>
+<hr>
+<div class="requestLine-container">
+    <div class="rl-header-container">
+        <h2>Request Line List</h2>
+    </div>
+    <div class="create-container">
+        <a routerLink='/requestline/create/{{rReqId}}' class="create-button">Create Request<i
+                class="fas fa-plus-circle"></i></a>
+    </div>
+    <table class="table table-sm table-striped">
+        <thead class="thead-dark">
+            <th class="table-secondary btn-link font-weight-bold"><u>Product</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Quantity</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Price</u></th>
+            <th class="table-secondary btn-link font-weight-bold"><u>Line Price</u></th>
+            <th class="table-secondary btn-link font-weight-bold">Action</th>
+        </thead>
+        <tbody>
+            <tr *ngIf="!noLines" style="background-color: red;
+            color: white;">
+                <td>No Request Lines!</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr *ngFor="let rl of requestLines">
+                <td>{{rl.product.name}}</td>
+                <td>{{rl.quantity}}</td>
+                <td>{{rl.product.price | currency}}</td>
+                <td>{{rl.product.price * rl.quantity | currency}}</td>
+                <td>
+                    <a routerLink='/requestline/edit/{{rl.id}}'>
+                        <i style="margin-right: .5rem;" class="fas fa-edit table-icon" title="edit"></i>
+                    </a>
+                    <a (click)="remove(rl.id);">
+                        <i class="fas fa-ban table-icon" style="color: red;" title="delete"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="submit-container" style="margin-left: 1rem;">
+        <button (click)="submitRev();" class="btn btn-primary">Submit for Review</button>
+    </div>
+</div>

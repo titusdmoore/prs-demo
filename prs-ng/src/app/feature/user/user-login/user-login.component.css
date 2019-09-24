@@ -1,0 +1,37 @@
+.icn-container {
+    padding-bottom: 2rem;
+    position: relative;
+}
+.icon-bg {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -2.5rem;
+    right: 8.2rem;
+    background-color: #363d44;
+}
+.logo-log {
+    max-width: 3rem;
+    margin-top: 1.4rem;
+    margin-left: 1rem;
+}
+.login-links span {
+    margin-left: 4rem;
+    color: #363d44;
+}
+.login-links a {
+    display: inline;
+    float: right;
+    margin-top: .7rem;
+    border-bottom: 2px solid transparent;
+    color: #007bff;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: .7rem;
+}
+.login-links:hover a {
+    text-decoration: none;
+    color: #007bff;
+    border-bottom: 2px solid #007bff;
+}

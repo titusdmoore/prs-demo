@@ -1,0 +1,61 @@
+<div class="vendor-c-form">
+    <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/vendor/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+    <p *ngIf='!vendor'>Loading...</p>
+    <div *ngIf='vendor' class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Code</span>
+            </div>
+            <input [(ngModel)]="vendor.code" type="text" aria-label="Code" class="form-control" placeholder="Code">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Name</span>
+            </div>
+            <input [(ngModel)]="vendor.name" type="text" aria-label="Name" class="form-control" placeholder="Name">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Address</span>
+            </div>
+            <input [(ngModel)]="vendor.address" type="text" aria-label="Address" class="form-control"
+                placeholder="Address">
+            <div class="input-group-prepend">
+                <span class="input-group-text">City</span>
+            </div>
+            <input [(ngModel)]="vendor.city" type="text" aria-label="City" class="form-control" placeholder="City">
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" mask="SS">State</span>
+            </div>
+            <input [(ngModel)]="vendor.state" type="text" aria-label="State" class="form-control" placeholder="State">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Zip</span>
+            </div>
+            <input [(ngModel)]="vendor.zip" type="text" aria-label="Zip" class="form-control" placeholder="Zip" mask='99999'>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Phone</span>
+            </div>
+            <input [(ngModel)]="vendor.phone" type="text" aria-label="State" class="form-control"
+                placeholder="Phone Number" mask='(000) 000-0000'>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Email</span>
+            </div>
+            <input [(ngModel)]="vendor.email" type="text" aria-label="Zip" class="form-control" placeholder="Email">
+        </div>
+
+        <div>
+            <button (click)='create();' class='btn btn-primary'>Create</button>
+        </div>
+    </div>
+</div>

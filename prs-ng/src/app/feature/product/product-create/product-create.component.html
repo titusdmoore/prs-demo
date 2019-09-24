@@ -1,0 +1,57 @@
+<div class='component-content'>
+  <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+    <span>
+      <h1 class='page-header'>{{title}}</h1>
+    </span>
+    <a routerLink='/product/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+        style="margin-right: .5rem;"></i>Back to List</a>
+  </div>
+  <p *ngIf='undefined'>Loading ...</p>
+
+  <div *ngIf='product'>
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="vendor">Vendor</label>
+        </div>
+        <select [(ngModel)]='product.vendor' class='form-control custom-select' name='Vendor' id='vendor'>
+          <option *ngFor="let vendor of vendors" [ngValue]="vendor">{{vendor.name}}</option>
+        </select>
+        <div class="input-group-prepend">
+          <label for="partNbr" class="input-group-text">Part Number</label>
+        </div>
+        <input [(ngModel)]='product.partNbr' name='PartNumber' type="text" class="form-control col-sm-6"
+          id="productpartnumber" aria-describedby="emailHelp" placeholder="Part Number" id="partNbr">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Name</span>
+        </div>
+        <input [(ngModel)]='product.name' name='Name' type="text" class="form-control col-sm-6" id="productname"
+          aria-describedby="emailHelp" placeholder="Name">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Price</span>
+        </div>
+        <input [(ngModel)]='product.price' name='Price' type="number" class="form-control col-sm-6" id="productprice"
+          aria-describedby="emailHelp" placeholder="Price">
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Unit</span>
+        </div>
+        <input [(ngModel)]='product.unit' name='Unit' type="text" class="form-control col-sm-6" id="productunit"
+          aria-describedby="emailHelp" placeholder="Unit" min="0">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Photo Path</span>
+        </div>
+        <input [(ngModel)]='product.photoPath' name='PhotoPath' type="text" class="form-control col-sm-6"
+          id="productphotopath" aria-describedby="emailHelp" placeholder="Photo Path">
+      </div>
+    </div>
+    <div class='form-group'>
+      <button (click)='create()' class='btn btn-primary'>Create</button>
+    </div>
+  </div>
+</div>

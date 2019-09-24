@@ -1,0 +1,78 @@
+<div class='component-content'>
+    <div class='lefthalf'>
+        <div class="header">
+            <span>
+                <h1 class="page-header">{{title}}</h1>
+            </span>
+            <!-- Create User Button -->
+            <div class="create-container" *ngIf='loggedInUser !== null && loggedInUser.isAdmin'>
+                <a routerLink='/user/create' class="create-button">Create User<i class="fas fa-plus-circle"></i></a>
+            </div>
+        </div>
+
+        <!-- <span><a *ngIf='loggedInUser.admin' routerLink='/user/create'>
+            <img id='createnew' width='20' height='20' src='assets/add-icon.png' title='Add New'></a>
+    </span> -->
+    </div>
+</div>
+<p *ngIf='!users'>Loading ...</p>
+<table class="table table-sm table-striped" *ngIf='users'>
+    <thead class="thead-dark">
+        <tr>
+            <th class='table-secondary'></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('username')"><u>User Name</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('lastname')"><u>Name</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('phone')"><u>Phone</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('email')"><u>Email</u></a></th>
+            <th class="table-secondary btn-link"><a class='btn btn-link font-weight-bold'>Privilege</a></th>
+            <th class="table-secondary btn-link"><a class='btn btn-link font-weight-bold'>Action</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let user of users | sort:sortCriteria:sortOrder'>
+            <td></td>
+            <td>{{user.username}}</td>
+            <td>{{user.lastname}}, {{user.firstname}}</td>
+            <td >{{user.phone | mask: '(000) 000-0000'}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.isReviewer?"Rvw":""}} {{user.isAdmin?"Adm":""}}</td>
+            <td class='actions'>
+                <a routerLink='/user/detail/{{user.id}}' style='padding-left: 16px' class='actionIcon'><i
+                        class="fas fa-info-circle table-icon" title="view"></i></a>
+                <a routerLink='/user/edit/{{user.id}}' class='actionIcon'><i class="fas fa-edit table-icon"
+                        title="edit"></i></a>
+                <!-- <a *ngIf='loggedInUser.admin' routerLink='/user/edit/{{user.id}}' class='actionIcon'><img
+                        src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a> -->
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+<!-- Reimplement in personal work time-->
+<!-- <table class="table table-striped" *ngIf="users">
+    <thead class="thead-dark">
+    <tr>
+        <th>ID</th>
+        <th><a (click)="sortBy('username')"><u>Username</u></a></th>
+        <th><a (click)="sortBy('firstname')"><u>First Name</u></a></th>
+        <th><a (click)="sortBy('lastname')"><u>Last Name</u></a></th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let user of users | sort:sortCriteria:sortOrder:isR">
+        <td>{{user.id}}</td>
+        <td>{{user.username}}</td>
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+    </tr>
+</tbody>
+</table> -->

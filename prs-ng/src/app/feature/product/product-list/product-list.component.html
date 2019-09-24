@@ -1,0 +1,61 @@
+<!-- <div class='component-content'>
+  <div class='lefthalf'>
+    <div class="header">
+      <span>
+        <h1>{{title}}</h1>
+      </span>
+      <div class="create-container">
+        <a routerLink='/product/create' class="create-button">Create Product<i class="fas fa-plus-circle"></i></a>
+      </div>
+    </div> -->
+<div class="header">
+  <span>
+    <h1>{{title}}</h1>
+  </span>
+  <div class="create-container">
+    <a routerLink='/product/create' class="create-button">Create Product<i class="fas fa-plus-circle"></i></a>
+  </div>
+</div>
+
+<!-- <span *ngIf='loggedInUser.admin'><a routerLink='/product/create'> -->
+<!-- </div>
+</div> -->
+<p *ngIf='!products'>Loading ...</p>
+<table class="table table-sm table-striped" *ngIf='products'>
+  <thead class="thead-dark">
+    <tr>
+      <th class='table-secondary'></th>
+      <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+          (click)="sortBy('vendor')"><u>Vendor</u></a></th>
+      <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+          (click)="sortBy('code')"><u>Part Number</u></a></th>
+      <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+          (click)="sortBy('name')"><u>Name</u></a></th>
+      <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+          (click)="sortBy('price')"><u>Price</u></a></th>
+      <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+          (click)="sortBy('unit')"><u>Unit</u></a></th>
+      <th class="table-secondary btn-link"><a class='btn btn-link font-weight-bold'>Action</a></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor='let product of products | sort:sortCriteria:sortOrder'>
+      <td></td>
+      <td>{{product.vendor.name}}</td>
+      <td>{{product.partNbr}}</td>
+      <td>{{product.name}}</td>
+      <td>
+        <p>{{product.price | currency}}</p>
+      </td>
+      <td>{{product.unit}}</td>
+      <td>
+        <!-- Temp rl to list -->
+        <a routerLink='/product/detail/{{product.id}}'>
+          <i style="margin-right: .5rem;" class="fas fa-info-circle table-icon" title="view"></i>
+        </a>
+        <a routerLink='/product/edit/{{product.id}}'>
+          <i class="fas fa-edit table-icon" title="edit"></i>
+        </a></td>
+    </tr>
+  </tbody>
+</table>

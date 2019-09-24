@@ -1,0 +1,74 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="remove();" data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+    <span>
+        <h1 class='page-header'>{{title}}</h1>
+    </span>
+    <a routerLink='/request/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+            style="margin-right: .5rem;"></i>Back to List</a>
+</div>
+<div class="form-group" *ngIf="request">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="user">User</label>
+        </div>
+        <input value='{{request.user.username}}' class='form-control col-sm-6' name='User' id='user' readonly>
+        <div class="input-group-prepend">
+            <label for="Description" class="input-group-text">Description</label>
+        </div>
+        <input value='{{request.description}}' name='description' type="text" class="form-control col-sm-6"
+            aria-describedby="emailHelp" placeholder="Description" id="description" readonly>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Justification</span>
+        </div>
+        <input value='{{request.justification}}' name='Justification' type="text" class="form-control col-sm-6"
+            id="productname" aria-describedby="emailHelp" placeholder="Justification" readonly>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Status</span>
+        </div>
+        <input value='{{request.status}}' class='form-control col-sm-6' name='User' id='user' readonly>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Total</span>
+        </div>
+        <input value='{{request.total | currency}}' name='total' type="text" class="form-control col-sm-6"
+            id="productname" aria-describedby="emailHelp" placeholder="Total" readonly>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Delivery</span>
+        </div>
+        <input value='{{request.deliveryMode}}' name='total' type="text" class="form-control col-sm-6" id="productname"
+            aria-describedby="emailHelp" placeholder="Total" readonly>
+    </div>
+    <div class="input-group" *ngIf="request.status === 'Rejected'">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Rejection</span>
+        </div>
+        <input value='{{request.rejectionReason}}' name='total' type="text" class="form-control col-sm-6"
+            id="productname" aria-describedby="emailHelp" placeholder="Reason" readonly>
+    </div>
+    <a routerLink="/request/edit/{{request.id}}" class="btn btn-primary" style="margin-right: 1rem;">Edit</a>
+    <button data-toggle="modal" data-target="#deleteModal" class="btn btn-danger">Delete</button>
+</div>

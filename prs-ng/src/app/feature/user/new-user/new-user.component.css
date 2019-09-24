@@ -1,0 +1,36 @@
+.name-field {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+.usrname-field {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.create-chck-inln {
+    width: 25%;
+}
+.create-chck-inln input {
+    height: 1rem;
+}
+.form-group {
+    width: 75%;
+    margin: auto;
+}
+.page-header {
+    display: inline-flex;
+    margin-top: .5rem;
+}
+.back-btn {
+    float: right;
+    margin-top: 1rem;
+}
+.back-btn:hover i {
+    transform: scale(1.1, 1.1);
+}
+.back-btn {
+    background-color: #007bff;
+    border-color: #007bff;
+}

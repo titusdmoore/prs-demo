@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.component-content {
+    margin-left: 10px
+  }
+  .component-title {
+    font-weight: 500
+  }
+  .actionIcon {
+    padding-right: 3px
+  }  

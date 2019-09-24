@@ -1,0 +1,43 @@
+<div class='component-content'>
+    <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/requestline/list/{{requestLine.request.id}}' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+    <p *ngIf='undefined'>Loading ...</p>
+
+    <div *ngIf='requestLine'>
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="product">Product</label>
+                </div>
+                <!-- <select [(ngModel)]='requestline.product' class='form-control custom-select' name='Product'
+                    id='product'>
+                    <option *ngFor="let product of products" [ngValue]="product">{{product.name}}</option>
+                </select> -->
+                <select [(ngModel)]='requestLine.product.id' [compareWith]='compareFn' class='form-control'
+                    name='Vendor' id='request-User'>
+                    <option *ngFor="let p of products" [ngValue]="p.id"
+                        [selected]="p.id == requestLine.product.id">
+                        {{p.name}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Quantity</span>
+                </div>
+                <input [(ngModel)]='requestLine.quantity' name='quantity' type="number" class="form-control"
+                    id="quantity" aria-describedby="quantity" placeholder="Quantity" id="quantity" min="0">
+            </div>
+        </div>
+    </div>
+    <div class='form-group'>
+        <button (click)='edit()' class='btn btn-primary'>Update</button>
+    </div>
+</div>

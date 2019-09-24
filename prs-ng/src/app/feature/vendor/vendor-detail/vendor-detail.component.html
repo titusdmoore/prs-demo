@@ -1,0 +1,87 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)='remove();' data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="vendor-c-form">
+    <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/vendor/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+    <p *ngIf='!vendor'>Loading...</p>
+    <div *ngIf='vendor' class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Code</span>
+            </div>
+            <input value="{{vendor.code}}" type="text" aria-label="Code" class="form-control" placeholder="Code"
+                readonly>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Name</span>
+            </div>
+            <input value="{{vendor.name}}" type="text" aria-label="Name" class="form-control" placeholder="Name"
+                readonly>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Address</span>
+            </div>
+            <input value="{{vendor.address}}" type="text" aria-label="Address" class="form-control"
+                placeholder="Address" readonly>
+            <div class="input-group-prepend">
+                <span class="input-group-text">City</span>
+            </div>
+            <input value="{{vendor.city}}" type="text" aria-label="City" class="form-control" placeholder="City"
+                readonly>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">State</span>
+            </div>
+            <input value="{{vendor.state}}" type="text" aria-label="State" class="form-control" placeholder="State"
+                readonly>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Zip</span>
+            </div>
+            <input value="{{vendor.zip}}" type="text" aria-label="Zip" class="form-control" placeholder="Zip" readonly>
+        </div>
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Phone</span>
+            </div>
+            <input value="{{vendor.phone | mask: '(000) 000-0000'}}" type="text" aria-label="State" class="form-control"
+                placeholder="Phone Number" readonly>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Email</span>
+            </div>
+            <input value="{{vendor.email}}" type="text" aria-label="Zip" class="form-control" placeholder="Email"
+                readonly>
+        </div>
+
+        <div>
+            <a routerLink="/vendor/edit/{{vendor.id}}" class="btn btn-primary" style="margin-right: 1rem;">Edit</a>
+            <button class='btn btn-danger' data-toggle="modal" data-target="#deleteModal">Delete</button>
+        </div>
+    </div>
+</div>

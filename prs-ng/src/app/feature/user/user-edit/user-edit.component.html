@@ -1,0 +1,132 @@
+<div id='component'>
+    <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/user/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+    <p *ngIf='!user'>Loading...</p>
+    <div *ngIf='user'>
+        <div class="input-group name-field">
+            <div class="input-group-prepend">
+                <span class="input-group-text">First and Last</span>
+            </div>
+            <input [(ngModel)]='user.firstname' name='FirstName' type="text" class="form-control" id="userfirstname"
+                aria-describedby="fnameHelp" placeholder="First">
+            <input [(ngModel)]='user.lastname' name='LastName' type="text" class="form-control" id="userlastname"
+                aria-describedby="lnameHelp" placeholder="Last">
+        </div>
+
+        <div class="input-group name-field">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Username</span>
+            </div>
+            <input [(ngModel)]='user.username' name='UserName' type="text" class="form-control col-sm-6" id="username"
+                aria-describedby="unameHelp" placeholder="Username">
+            <div class="input-group-prepend">
+                <a (click)="changeType()">
+                    <span class="input-group-text">Password</span>
+                </a>
+            </div>
+            <input [(ngModel)]='user.password' name='Password' class="form-control col-sm-6" id="password"
+                aria-describedby="pwdHelp" type="password" placeholder="Password">
+            <!-- <input [(ngModel)]='user.password' name='Password' *ngIf="user.type !== 'password'"
+                class="form-control col-sm-6" id="password" aria-describedby="pwdHelp" type="password"
+                placeholder="Password"> -->
+        </div>
+
+        <div class="input-group name-field">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Phone</span>
+            </div>
+            <!-- <script>
+                    $(":input").inputmask();
+                    $("#PhoneNumber").inputmask({"mask": "(999) 999-9999"});
+                </script> -->
+            <input [(ngModel)]='user.phone' name='PhoneNumber' type="text" class="form-control col-sm-6" id="phone"
+                aria-describedby="phoneHelp" placeholder="Phone Number" mask='(000) 000-0000'>
+            <div class="input-group-prepend">
+                <span class="input-group-text">Email</span>
+            </div>
+            <input [(ngModel)]='user.email' name='Email' type="text" class="form-control col-sm-6" id="email"
+                aria-describedby="emailHelp" placeholder="Email">
+        </div>
+
+        <div class="create-check d-flex justify-content-center">
+            <div class="form-check form-check-inline create-chck-inln">
+                <label class="form-check-label" for="userAdmin">Is Admin: </label>
+                <input [(ngModel)]='user.isAdmin' name='Admin' type="checkbox" class="form-control col-sm-6"
+                    id="userAdmin" aria-describedby="adminHelp" placeholder="Admin">
+            </div>
+
+            <div class="form-check form-check-inline create-chck-inln">
+                <label class="form-check-label" for="userReviewer">Is Reviewer: </label>
+                <input [(ngModel)]='user.isReviewer' name='Reviewer' type="checkbox" class="form-control col-sm-6"
+                    id="userReviewer" aria-describedby="reviewerHelp" placeholder="Reviewer">
+            </div>
+        </div>
+
+
+        <!-- <div class="input-group usrname-field">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Username</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                    aria-describedby="basic-addon1">
+            </div> -->
+        <!-- Unused Fields -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="userfirstname">First name:</label>
+                <input [(ngModel)]='user.firstname' name='FirstName' type="text" class="form-control"
+                    id="userfirstname" aria-describedby="fnameHelp" placeholder="First">
+                <small id="fnameHelp" class="form-text text-muted col-sm-2">User's First Name</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="userlastName">Last name:</label>
+                <input [(ngModel)]='user.lastname' name='LastName' type="text" class="form-control col-sm-6"
+                    id="userlastname" aria-describedby="lnameHelp" placeholder="LastName">
+                <small id="lnameHelp" class="form-text text-muted col-sm-2">User's Last Name</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="username">Username:</label>
+                <input [(ngModel)]='user.username' name='UserName' type="text" class="form-control col-sm-6" id="username"
+                    aria-describedby="unameHelp" placeholder="UserName">
+                <small id="unameHelp" class="form-text text-muted col-sm-2">User's UserName</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="password">Password:</label>
+                <input [(ngModel)]='user.password' name='Password' type="text" class="form-control col-sm-6" id="password"
+                    aria-describedby="pwdHelp" placeholder="Password">
+                <small id="pwdHelp" class="form-text text-muted col-sm-2">User's Password</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="phone">Phone Number:</label>
+                <input [(ngModel)]='user.phone' name='PhoneNumber' type="text" class="form-control col-sm-6" id="phone"
+                    aria-describedby="phoneHelp" placeholder="PhoneNumber">
+                <small id="phoneHelp" class="form-text text-muted col-sm-2">User's Phone Number</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="email">Email:</label>
+                <input [(ngModel)]='user.email' name='Email' type="text" class="form-control col-sm-6" id="email"
+                    aria-describedby="emailHelp" placeholder="Email">
+                <small id="emailHelp" class="form-text text-muted col-sm-2">User's Email</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="userAdmin">Admin:</label>
+                <input [(ngModel)]='user.isAdmin' name='Admin' type="checkbox" class="form-control col-sm-6" id="userAdmin"
+                    aria-describedby="adminHelp" placeholder="Admin">
+                <small id="adminHelp" class="form-text text-muted col-sm-2">Admin Authority</small>
+            </div> -->
+        <!-- <div class="form-group row">
+                <label class='col-form-label col-sm-2' for="userReviewer">Reviewer:</label>
+                <input [(ngModel)]='user.isReviewer' name='Reviewer' type="checkbox" class="form-control col-sm-6"
+                    id="userReviewer" aria-describedby="reviewerHelp" placeholder="Reviewer">
+                <small id="reviewerHelp" class="form-text text-muted col-sm-2">Reviewer Authority</small>
+            </div> -->
+
+        <div class='form-group'>
+            <button (click)='edit();' class='btn btn-primary'>Update</button>
+        </div>
+    </div>
+</div>

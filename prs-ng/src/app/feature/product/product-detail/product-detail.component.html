@@ -1,0 +1,71 @@
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Delete?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Are you sure you want to delete?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)='remove();' data-dismiss="modal">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+    <span>
+        <h1 class='page-header'>{{title}}</h1>
+    </span>
+    <a routerLink='/product/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+            style="margin-right: .5rem;"></i>Back to List</a>
+</div>
+<div class="form-group">
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <label class="input-group-text" for="vendor">Vendor</label>
+        </div>
+        <input value='{{product.vendor.name}}' name='vendor' type="text" class="form-control col-sm-6" id="vendor"
+            aria-describedby="vendor" placeholder="Vendor" id="vendor" readonly>
+        <div class="input-group-prepend">
+            <label for="partNbr" class="input-group-text">Part Number</label>
+        </div>
+        <input value='{{product.partNbr}}' name='PartNumber' type="text" class="form-control col-sm-6"
+            id="productpartnumber" aria-describedby="emailHelp" placeholder="Part Number" id="partNbr" readonly>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Name</span>
+        </div>
+        <input value='{{product.name}}' name='Name' type="text" class="form-control col-sm-6" id="productname"
+            aria-describedby="emailHelp" placeholder="Name" readonly>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Price</span>
+        </div>
+        <input value='{{product.price | mask: "0*.00"}}' name='Price' type="number" class="form-control col-sm-6"
+            id="productprice" aria-describedby="emailHelp" placeholder="Price" prefix="$" readonly>
+    </div>
+
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Unit</span>
+        </div>
+        <input value='{{product.unit}}' name='Unit' type="text" class="form-control col-sm-6" id="productunit"
+            aria-describedby="emailHelp" placeholder="Unit" readonly>
+        <div class="input-group-prepend">
+            <span class="input-group-text">Photo Path</span>
+        </div>
+        <input value='{{product.photoPath}}' name='PhotoPath' type="text" class="form-control col-sm-6"
+            id="productphotopath" aria-describedby="emailHelp" placeholder="None" readonly>
+    </div>
+    <div>
+        <a routerLink="/product/edit/{{product.id}}" class="btn btn-primary" style="margin-right: 1rem;">Edit</a>
+        <button data-toggle="modal" data-target="#deleteModal" class='btn btn-danger'>Delete</button>
+    </div>
+</div>

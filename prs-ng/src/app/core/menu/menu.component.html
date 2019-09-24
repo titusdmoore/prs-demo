@@ -1,0 +1,20 @@
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark bg-dark">
+    <a routerLink="/home" class="navbar-brand"><img class='img-responsive' src="../../../assets/PRS-Logo-2-Resized.png"
+            alt=""></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item" *ngFor="let mi of menuItems" title="{{mi.tooltip}}">
+                <a class="nav-link" routerLink="{{mi.href}}">{{mi.display}}</a>
+                <!-- <a *ngIf='!user' class="nav-link disabled">{{mi.display}}</a> -->
+            </li>
+        </ul>
+    </div>
+    <div class="login-container">
+        <a routerLink="/user/login" class="login-button"><i *ngIf="loggedInUser === null"
+                class="fas fa-user-lock"></i><i *ngIf="loggedInUser !== null" class="fas fa-user-check"></i>Login</a>
+    </div>
+</nav>

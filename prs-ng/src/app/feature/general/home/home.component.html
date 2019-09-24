@@ -1,0 +1,93 @@
+<div class="home-container">
+    <div class="alert alert-primary loggedAlert" role="alert" *ngIf="logged">
+        <h1>Welcome, {{loggedUser.firstname}}!</h1>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <div class="loggedOut" *ngIf="!logged">
+        <div class="alert alert-danger" role="alert">
+            <h1>Oh, No!</h1>
+            <h2>You aren't logged in!</h2>
+            <button routerLink="/user/login" class="btn btn-primary alert-login"><i style="margin-right: .5rem;"
+                    class="fas fa-user-lock"></i>Login</button>
+        </div>
+    </div>
+    <h1>Meet the Campers!</h1>
+    <div class="content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <img class="camp-image" src="../../../../assets/C589939E-5A3C-4407-BADE-6CF9B493A8B1.JPG"
+                        alt="the team">
+                </div>
+                <div class="col-sm">
+                    <div class="camper-desc">
+                        <p>
+                            <span>Titus Moore: </span>
+                            Goal-oriented Full Stack Developer with strong commitment to collaboration and
+                            solution-oriented problem-solving.
+                        </p>
+                        <p>
+                            <span>Jesse Kyle: </span>
+                            Description
+                        </p>
+                        <p>
+                            <span>Alex Chan: </span>
+                            Description
+                        </p>
+                        <p>
+                            <span>Brailee Begley: </span>
+                            Description
+                        </p>
+                        <p>
+                            <span>Glenn Lindmark: </span>
+                            Description
+                        </p>
+                        <p>
+                            <span>Maggie Schutzman: </span>
+                            Description
+                        </p>
+                        <p>
+                            <span>Marianne Linardos: </span>
+                            Description
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container tech-container" style="margin-top: 1.5rem;">
+            <div class="row">
+                <div class="tc-img col-2">
+                    <img style="max-width: 8rem;" src="../../../../assets/angular.png" alt="Angular Logo">
+                </div>
+                <div class="tc-text col-10">
+                    Client-side TypeScript based framework which is used to create dynamic web applications. It is
+                    very similar to its previous versions except having some extensive features.
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <h1>Max Train Capstone</h1>
+    <div>
+        This is a Purchase request system developed by Titus Moore as the capstone project for graduation at Max
+        Technical Training, from the .Net Bootcamp. The capstone is developed using a .Net Backend using Web Api and the
+        front end interaction is done using Angular. Additional technologies used are SQL Server, Azure, and testing was
+        done using Postman.
+    </div>
+    <div class="tech-container">
+        <div class="angular">
+            <img src="../../../../assets/angular.png" alt="angular-logo">
+            <div class="angular-content">
+                <p>
+                   
+                </p>
+                <p>
+                    In this capstone project Angular is used for the frontend, and is used to retrieve the data from the
+                    backend Web API's.
+                </p>
+            </div>
+        </div>
+    </div> -->
+</div>

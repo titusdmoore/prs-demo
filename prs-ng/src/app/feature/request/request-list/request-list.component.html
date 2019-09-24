@@ -1,0 +1,68 @@
+<!-- <div class='component-content'>
+  <div class='lefthalf'>
+    <div class="header">
+      <span>
+        <h1>{{title}}</h1>
+      </span>
+      <div class="create-container">
+        <a routerLink='/product/create' class="create-button">Create Product<i class="fas fa-plus-circle"></i></a>
+      </div>
+    </div> -->
+<div class="header">
+    <span>
+        <h1>{{title}}</h1>
+    </span>
+    <div class="create-container">
+        <a routerLink='/request/create' class="create-button">Create Request<i class="fas fa-plus-circle"></i></a>
+    </div>
+</div>
+
+<!-- <span *ngIf='loggedInUser.admin'><a routerLink='/product/create'> -->
+<!-- </div>
+          </div> -->
+
+<p *ngIf='!requests'>Loading ...</p>
+<table class="table table-sm table-striped" *ngIf='requests'>
+    <thead class="thead-dark">
+        <tr>
+            <th class='table-secondary'></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('user')"><u>User</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('description')"><u>Description</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('justification')"><u>Justification</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('status')"><u>Status</u></a></th>
+            <th class="table-secondary btn-link"><a class="btn btn-link font-weight-bold"
+                    (click)="sortBy('total')"><u>Total</u></a></th>
+            <th class="table-secondary btn-link">
+                <a class='btn btn-link font-weight-bold'>Action</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor='let r of requests | sort:sortCriteria:sortOrder'>
+            <td></td>
+            <td>{{r.user.username}}</td>
+            <td>{{r.description}}</td>
+            <td>{{r.justification}}</td>
+            <td>{{r.status}}</td>
+            <td>{{r.total | currency}}</td>
+            <td>
+                <!-- Temp rl to list -->
+                <a routerLink='/request/detail/{{r.id}}'>
+                    <i style="margin-right: .5rem;" class="fas fa-info-circle table-icon" title="view"></i>
+                </a>
+                <div *ngIf="r.status !== 'Approved'" style="display: inline;">
+                    <a routerLink='/request/edit/{{r.id}}'>
+                        <i style="margin-right: .5rem;" class="fas fa-edit table-icon" title="edit"></i>
+                    </a>
+                    <a routerLink='/requestline/list/{{r.id}}'>
+                        <i class="fas fa-bars table-icon"></i>
+                    </a>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

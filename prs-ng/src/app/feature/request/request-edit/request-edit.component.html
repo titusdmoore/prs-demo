@@ -1,0 +1,47 @@
+<div class='component-content'>
+    <div id='pagetitle' class="form-group" style="margin-bottom: 1rem;">
+        <span>
+            <h1 class='page-header'>{{title}}</h1>
+        </span>
+        <a routerLink='/request/list' class="btn btn-primary back-btn"><i class="fas fa-arrow-left"
+                style="margin-right: .5rem;"></i>Back to List</a>
+    </div>
+    <p *ngIf='!request'>Loading...</p>
+    <div *ngIf='request'>
+        <div class="form-group">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">User</span>
+                </div>
+                <select [(ngModel)]='request.user.id' [compareWith]='compareFn' class='form-control' name='Vendor'
+                    id='request-User'>
+                    <option *ngFor="let u of users" [ngValue]="u.id" [selected]="u.id == request.user.id">
+                        {{u.username}}
+                    </option>
+                </select>
+                <div class="input-group-prepend">
+                    <label for="Description" class="input-group-text">Description</label>
+                </div>
+                <input [(ngModel)]='request.description' name='description' type="text" class="form-control col-sm-6"
+                    aria-describedby="emailHelp" placeholder="Description" id="description">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Justification</span>
+                </div>
+                <input [(ngModel)]='request.justification' name='Justification' type="text"
+                    class="form-control col-sm-6" id="productname" aria-describedby="emailHelp"
+                    placeholder="Justification">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Delivery Method</span>
+                </div>
+                <select [(ngModel)]='request.deliveryMode' class='form-control custom-select' name='User' id='user'>
+                    <option *ngFor="let dm of delMthds" [ngValue]="dm" [selected]="request.deliveryMode">{{dm}}</option>
+                </select>
+            </div>
+        </div>
+        <div class='form-group'>
+            <button (click)='edit()' class='btn btn-primary'>Update</button>
+        </div>
+    </div>
+</div>

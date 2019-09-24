@@ -1,0 +1,56 @@
+.home-container {
+    padding: 1rem;
+}
+.loggedOut h1 {
+    display: inline;
+    font-size: 2rem;
+}
+.loggedOut h2 {
+    display: inline;
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+.loggedAlert h1 {
+    font-size: 2rem;
+}
+.loggedAlert, .loggedOut {
+    position: relative;
+}
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1.4rem;
+}
+.alert-login {
+    position: absolute;
+    right: 1rem;
+    text-transform: uppercase;
+    padding: .5rem 1rem;
+	background-color: #007bff;
+	color: white;
+    border-radius: .3rem;
+    font-weight: 500;
+}
+.alert-login:hover i {
+    transform: scale(1.1, 1.1);
+}
+.camp-image {
+    max-width: 40rem;
+    border-radius: 1rem;
+    -webkit-box-shadow: 5px 5px 15px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 5px 5px 15px -7px rgba(0,0,0,0.75);
+    box-shadow: 5px 5px 15px -7px rgba(0,0,0,0.75);
+}
+.camper-desc {
+    font-size: 1rem;
+}
+.camper-desc span {
+    font-weight: 600;
+}
+.tech-container {
+    width: 65%;
+    margin: auto;
+}
+.tc-text {
+    padding-top: 2.5rem;
+}
