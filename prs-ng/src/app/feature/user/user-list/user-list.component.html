@@ -5,7 +5,8 @@
                 <h1 class="page-header">{{title}}</h1>
             </span>
             <!-- Create User Button -->
-            <div class="create-container" *ngIf='loggedInUser !== null && loggedInUser.isAdmin'>
+            <div class="create-container">
+            <!-- <div class="create-container" *ngIf='loggedInUser !== null && loggedInUser.isAdmin'> -->
                 <a routerLink='/user/create' class="create-button">Create User<i class="fas fa-plus-circle"></i></a>
             </div>
         </div>
