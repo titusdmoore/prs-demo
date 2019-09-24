@@ -50,7 +50,11 @@
 .tech-container {
     width: 65%;
     margin: auto;
+    margin-top: 3.5rem;
 }
 .tc-text {
     padding-top: 2.5rem;
+}
+.tech-container h2 {
+    text-align: center;
 }
