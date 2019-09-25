@@ -58,3 +58,11 @@
 .tech-container h2 {
     text-align: center;
 }
+.carousel-inner img {
+    max-width: 50rem;
+    border-radius: 1rem;
+}
+.meet-carousel {
+    width: 50%;
+    margin: auto;
+}
